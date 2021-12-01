@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F0F0F0"
+    android:fitsSystemWindows="true"
+    tools:context=".mvp.rooms.RoomsFragment">
+
+    <RadioGroup
+        android:id="@+id/rgMenu"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/colorMessage"
+        android:checkedButton="@+id/rbmvAll"
+        android:orientation="horizontal"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        app:layout_constraintBottom_toTopOf="@id/llMenuText">
+
+        <pro.salebot.mobileclient.utils.views.RadioButtonMenuView
+            android:id="@+id/rbmvAll"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@android:color/transparent"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            app:colorShape="#1F6EFD"
+            tools:text="10913" />
+
+        <pro.salebot.mobileclient.utils.views.RadioButtonMenuView
+            android:id="@+id/rbmvWait"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@android:color/transparent"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            app:colorShape="#FF3838"
+            tools:text="1415" />
+
+        <pro.salebot.mobileclient.utils.views.RadioButtonMenuView
+            android:id="@+id/rbmvMy"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@android:color/transparent"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            app:colorShape="#48AE36"
+            tools:text="765" />
+
+        <pro.salebot.mobileclient.utils.views.RadioButtonMenuView
+            android:id="@+id/rbmvFree"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@android:color/transparent"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            app:colorShape="#686868"
+            tools:text="0" />
+
+    </RadioGroup>
+
+    <LinearLayout
+        android:id="@+id/llMenuText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorMessage"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/tvAll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:background="?selectableItemBackground"
+            android:text="@string/rooms_menu_all"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tvWait"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:background="?selectableItemBackground"
+            android:text="@string/rooms_menu_wait"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tvMy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:background="?selectableItemBackground"
+            android:text="@string/rooms_menu_my"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tvFree"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:background="?selectableItemBackground"
+            android:text="@string/rooms_menu_free"
+            android:textColor="@color/black" />
+
+    </LinearLayout>
+
+
+    <include
+        layout="@layout/view_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/rgMenu"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <include layout="@layout/drawer_menu" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

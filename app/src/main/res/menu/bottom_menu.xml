@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+            android:id="@+id/menu1"
+            android:enabled="true"
+            android:orderInCategory="1"
+            android:title="Все\nобращения"
+            android:icon="@drawable/ic_file" />
+
+    <item
+            android:id="@+id/menu2"
+            android:enabled="true"
+            android:orderInCategory="2"
+            android:title="Ожидают ответа"
+            android:icon="@drawable/ic_play" />
+
+    <item
+            android:id="@+id/menu3"
+            android:enabled="true"
+            android:orderInCategory="3"
+            android:title="Мои клиенты"
+            android:icon="@drawable/ic_back" />
+
+    <item
+            android:id="@+id/menu4"
+            android:enabled="true"
+            android:orderInCategory="4"
+            android:title="Свободные клиенты"
+            android:icon="@drawable/ic_error" />
+
+</menu>

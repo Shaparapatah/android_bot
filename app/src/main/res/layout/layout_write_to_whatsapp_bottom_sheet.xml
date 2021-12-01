@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/bottomSheet"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
+
+    <View
+            android:layout_width="50dp"
+            android:layout_height="5dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/top_bottom_sheet" />
+
+    <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:text="Написать в WhatsApp"
+            android:layout_marginBottom="10dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_height="wrap_content" />
+
+    <TextView
+            android:layout_width="match_parent"
+            android:textColor="@color/black"
+            android:text="Введите номер телефона"
+            android:textSize="16sp"
+            android:layout_marginBottom="5dp"
+            android:layout_height="wrap_content" />
+
+    <EditText
+            android:id="@+id/etPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_edit"
+            android:inputType="numberSigned"
+            android:textColorHint="#fff"
+            android:textColor="#fff"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp"
+            android:hint="780101010101" />
+
+    <TextView
+            android:layout_width="match_parent"
+            android:textColor="@color/black"
+            android:text="Имя"
+            android:textSize="16sp"
+            android:layout_marginBottom="5dp"
+            android:layout_height="wrap_content" />
+
+    <EditText
+            android:id="@+id/etName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_edit"
+            android:inputType="textPersonName"
+            android:textColorHint="#fff"
+            android:textColor="#fff"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp"
+            android:hint="Богдан" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnAdd"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/bg_button"
+        android:textColor="#fff"
+        android:layout_marginBottom="10dp"
+        android:text="Добавить" />
+
+</LinearLayout>

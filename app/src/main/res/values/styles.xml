@@ -1,0 +1,62 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:fontFamily">@font/font_application</item>
+        <item name="buttonStyle">@style/Button</item>
+        <item name="imageButtonStyle">@style/Button</item>
+    </style>
+
+    <style name="Button" parent="Widget.AppCompat.Button">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:background">@drawable/bg_button</item>
+    </style>
+
+    <style name="Toolbar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?attr/actionBarSize</item>
+        <item name="theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
+
+    <style name="AlertDialogStyle" parent="Theme.AppCompat.Light.Dialog">
+        <item name="buttonBarNegativeButtonStyle">@color/colorPrimaryDark</item>
+        <item name="buttonBarPositiveButtonStyle">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="ProgressBar">
+        <item name="colorAccent">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="Switch">
+        <item name="colorAccent">#ffffff</item>
+    </style>
+
+    <style name="TextAppearance">
+        <item name="android:lines">2</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_marginBottom">20dp</item>
+
+    </style>
+
+    <declare-styleable name="RadioButtonMenuView">
+        <attr name="colorShape" format="color" />
+    </declare-styleable>
+
+    <style name="chipTheme" parent="Widget.MaterialComponents.Chip.Choice">
+        <!--        <item name="chipBackgroundColor">@drawable/bg_chip_text_state_list</item>-->
+        <item name="chipCornerRadius">10dp</item>
+        <item name="chipStrokeColor">#D9D9D9</item>
+        <item name="chipStrokeWidth">1dp</item>
+        <item name="android:clickable">true</item>
+        <item name="android:checkable">true</item>
+        <item name="chipIconVisible">false</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+</resources>

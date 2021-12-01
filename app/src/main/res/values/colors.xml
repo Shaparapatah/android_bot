@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3073FF</color>
+    <color name="colorPrimaryDark">#245ABB</color>
+    <color name="colorAccent">#245ABB</color>
+    <color name="error">#B10202</color>
+    <color name="select">#AFAFAF</color>
+    <color name="subtitle">#80FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="colorMessage">#e1e9f4</color>
+
+    <color name="typeTemplateColor1">#fbfcff</color>
+    <color name="typeTemplateColor2">#a4e0ab</color>
+    <color name="typeTemplateColor3">#e393a8</color>
+    <color name="typeTemplateColor4">#7895e0</color>
+    <color name="typeTemplateColor5">#aed8bb</color>
+    <color name="typeTemplateColor6">#4a4e60</color>
+    <color name="typeTemplateColor7">#cbd7ef</color>
+    <color name="typeTemplateColor8">#f2dc9f</color>
+    <color name="templateStroke">#717171</color>
+</resources>
