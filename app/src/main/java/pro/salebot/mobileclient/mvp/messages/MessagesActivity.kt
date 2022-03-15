@@ -80,17 +80,26 @@ class MessagesActivity : AppCompatActivity(), MessagesView,
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_messages)
+
+        val appLinkAction = intent.action
+        val appLinkData: Uri? = intent.data
+
         init()
         if (intent != null) {
-            idRoom = intent.getStringExtra(Constants.EXTRA_ID_ROOM)!!
-            idProject = intent.getStringExtra(Constants.EXTRA_ID_PROJECT)!!
-            messagePresenterImpl.loadMessages(
-                idProject,
-                idRoom,
-                token,
-                login,
-                1
-            )
+            appLinkData?.lastPathSegment
+            Uri.parse("salebot.pro/projects")
+                .buildUpon()
+                .build().also {
+                    idRoom = intent.getStringExtra(Constants.EXTRA_ID_ROOM)!!
+                    idProject = intent.getStringExtra(Constants.EXTRA_ID_PROJECT)!!
+                    messagePresenterImpl.loadMessages(
+                        idProject,
+                        idRoom,
+                        token,
+                        login,
+                        1
+                    )
+                }
             messagesAdapter.notifyDataSetChanged()
             Glide.with(this)
                 .load(intent.getStringExtra(Constants.EXTRA_IMAGE_ROOM))
@@ -412,5 +421,4 @@ class MessagesActivity : AppCompatActivity(), MessagesView,
             }
         }
     }
-
 }

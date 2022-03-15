@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        package="pro.salebot.mobileclient">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="pro.salebot.mobileclient">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
@@ -17,7 +17,9 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity
             android:name=".mvp.template.TemplateActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize" />
+            android:configChanges="orientation|keyboardHidden|screenSize">
+
+        </activity>
         <activity android:name=".mvp.profile.ProfileActivity" />
 
         <service
@@ -25,27 +27,42 @@
             android:enabled="true"
             android:exported="false" />
 
+
         <activity
             android:name=".mvp.messages.MessagesActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize" />
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true">
+            <tools:validation testUrl="https://salebot.pro/projects" />
+        </activity>
         <activity
-                android:name=".ui.activities.MainActivity"
-                android:configChanges="orientation|keyboardHidden|screenSize"
-                android:launchMode="singleTask">
+            android:name=".ui.activities.MainActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.SIGN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="salebot.pro"
+                    android:pathPrefix="/projects"
+                    android:scheme="https" />
+            </intent-filter>
         </activity>
         <activity
-                android:name=".ui.activities.GalleryActivity"
-                android:configChanges="orientation|keyboardHidden|screenSize" />
+            android:name=".ui.activities.GalleryActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize" />
 
         <service
-                android:name=".service.NotificationService"
-                android:exported="false">
+            android:name=".service.NotificationService"
+            android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />

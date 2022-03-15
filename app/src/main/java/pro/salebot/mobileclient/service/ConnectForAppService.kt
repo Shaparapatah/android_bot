@@ -54,15 +54,22 @@ class ConnectForAppService : Service() {
             }
         }
 
-        fun startWithListener(context: Context?, email: String, token: String, csl: ConnectServiceListener) {
+        fun startWithListener(
+            context: Context?,
+            email: String,
+            token: String,
+            csl: ConnectServiceListener
+        ) {
             Intent(context, ConnectForAppService::class.java).apply {
                 context?.let {
                     putExtra(EXTRA_EMAIL, email)
                     putExtra(EXTRA_TOKEN, token)
                     connectServiceListener = csl
                     Log.d("qweqweqwe", "bindService")
-                    it.bindService(this,
-                        serviceConnection, BIND_AUTO_CREATE)
+                    it.bindService(
+                        this,
+                        serviceConnection, BIND_AUTO_CREATE
+                    )
                 }
 
             }

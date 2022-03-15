@@ -11,7 +11,7 @@ import pro.salebot.mobileclient.R
 import pro.salebot.mobileclient.database.DataBaseParams
 import pro.salebot.mobileclient.models.Project
 
-class MenuAdapter(val context: Context?, val menuItems: List<Project>): BaseAdapter() {
+class MenuAdapter(val context: Context?, val menuItems: List<Project>) : BaseAdapter() {
     @SuppressLint("ViewHolder")
     override fun getView(p0: Int, p1: View?, p2: ViewGroup?): View {
         val v = View.inflate(context, R.layout.item_menu, null)
@@ -28,7 +28,11 @@ class MenuAdapter(val context: Context?, val menuItems: List<Project>): BaseAdap
 
             // I used getActivity() as if you were calling from a fragment.
             // You just want to call getTheme() on the current activity, however you can get it
-            context!!.theme.resolveAttribute(android.R.attr.selectableItemBackground, typedValue, true)
+            context!!.theme.resolveAttribute(
+                android.R.attr.selectableItemBackground,
+                typedValue,
+                true
+            )
 
             // it's probably a good idea to check if the color wasn't specified as a resource
             if (typedValue.resourceId != 0) {
@@ -39,7 +43,9 @@ class MenuAdapter(val context: Context?, val menuItems: List<Project>): BaseAdap
             }
         }
 
-        if (DataBaseParams(context).getKey(DataBaseParams.KEY_ID_NOTIFICATION + menuItems[p0].id).isNullOrEmpty()) {
+        if (DataBaseParams(context).getKey(DataBaseParams.KEY_ID_NOTIFICATION + menuItems[p0].id)
+                .isNullOrEmpty()
+        ) {
             v.imageMenuView.visibility = View.GONE
         } else {
             v.imageMenuView.visibility = View.VISIBLE

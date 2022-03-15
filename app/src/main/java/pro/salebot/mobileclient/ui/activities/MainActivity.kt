@@ -2,6 +2,7 @@ package pro.salebot.mobileclient.ui.activities
 
 import android.app.AlertDialog
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.KeyEvent
 import androidx.appcompat.app.AppCompatActivity
@@ -22,6 +23,7 @@ class MainActivity : AppCompatActivity(), MainContract {
         super.onCreate(savedInstanceState)
         intent?.let {
             checkNotificationIntent(it)
+            handleIntent(it)
         }
 
         FirebaseAnalytics.getInstance(this);
@@ -36,6 +38,21 @@ class MainActivity : AppCompatActivity(), MainContract {
             showLogin()
         }
         dataBaseParams.close()
+
+
+    }
+
+    private fun handleIntent(intent: Intent) {
+        val appLinkAction = intent.action
+        val appLinkData: Uri? = intent.data
+        if (Intent.ACTION_VIEW == appLinkAction) {
+            appLinkData?.lastPathSegment?.also { clientsId ->
+                Uri.parse("https://salebot.pro/projects")
+                    .buildUpon()
+                    .appendPath(clientsId)
+                    .build()
+            }
+        }
     }
 
     override fun onNewIntent(intent: Intent?) {
@@ -43,9 +60,12 @@ class MainActivity : AppCompatActivity(), MainContract {
         intent?.let {
             if (it.hasExtra(Constants.EXTRA_ID_PROJECT)) {
                 showRooms()
+                handleIntent(it)
             }
             checkNotificationIntent(it)
+
         }
+
 
     }
 
