@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?android:attr/selectableItemBackground"
@@ -7,11 +9,21 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="5dp">
+        android:padding="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/checkView"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_check" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imageView"
@@ -72,6 +84,7 @@
                         android:textSize="15sp"
                         android:textStyle="bold" />
 
+
                     <TextView
                         android:id="@+id/dateCreateView"
                         android:layout_width="match_parent"
@@ -80,6 +93,7 @@
                         android:textColor="#aaa"
                         android:textSize="12sp"
                         android:textStyle="bold" />
+
 
                 </LinearLayout>
 
@@ -92,8 +106,9 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:background="#193073FF" />
+        android:background="#193073FF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

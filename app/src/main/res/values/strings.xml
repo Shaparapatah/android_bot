@@ -68,4 +68,5 @@
     <string name="client_info">Информация о клиенте:</string>
     <string name="order_value">Переменные сделки:</string>
     <string name="add_order_value">Добавить переменную сделки</string>
+    <string name="action_not_read_dialog">Пометить как непрочитанное</string>
 </resources>

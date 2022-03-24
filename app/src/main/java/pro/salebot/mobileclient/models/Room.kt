@@ -21,8 +21,13 @@ data class Room(
     var created_at: Date,
     var updated_at: Date,
     var last_message: Message?,
-    var answered: Boolean
+    var answered: Boolean,
+    /** Добавил поле 22.03.2022 */
+    var selected : Boolean
+
+
 ) {
+
 
     fun getMessages() : List<Message> {
         val messages = mutableListOf<Message>()

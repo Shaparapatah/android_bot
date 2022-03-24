@@ -28,6 +28,7 @@ import pro.salebot.mobileclient.models.RoomsData
 import pro.salebot.mobileclient.mvp.rooms.enums.RequestType
 import pro.salebot.mobileclient.rv.rooms.RoomsAdapter
 import pro.salebot.mobileclient.rv.rooms.RoomsAdapterListener
+import pro.salebot.mobileclient.rv.rooms.RoomsViewHolder
 import pro.salebot.mobileclient.rv.rooms.menu.MenuAdapter
 import pro.salebot.mobileclient.service.*
 import pro.salebot.mobileclient.ui.activities.MainContract
@@ -42,6 +43,7 @@ import pro.salebot.mobileclient.utils.log
 class RoomsFragment : Fragment(), RoomsView, RoomsAdapterListener, ProjectsBottomDialogListener,
     ConnectServiceListener, MessagesUpdateListener {
 
+    private var menuToolbar: Menu? = null
     private var idProject: String = ""
     private var requestType: String = RequestType.ALL.name
     private var searchText: String = ""
@@ -56,7 +58,7 @@ class RoomsFragment : Fragment(), RoomsView, RoomsAdapterListener, ProjectsBotto
 
     private val roomsPresenterImpl = RoomsPresenterImpl(this)
 
-    private var roomsAdapter = RoomsAdapter(mutableListOf(), this)
+    private var roomsAdapter = RoomsAdapter(mutableListOf(), this) { show -> showDeleteMenu(show) }
     private lateinit var menuAdapter: MenuAdapter
     private var projectList: List<Project> = emptyList()
 
@@ -85,7 +87,6 @@ class RoomsFragment : Fragment(), RoomsView, RoomsAdapterListener, ProjectsBotto
         }
 
         setHasOptionsMenu(true)
-
         logoutView.setOnClickListener {
             dataBaseParams.deleteKey(DataBaseParams.KEY_TOKEN)
             mainContract?.showLogin()
@@ -164,6 +165,11 @@ class RoomsFragment : Fragment(), RoomsView, RoomsAdapterListener, ProjectsBotto
         }
         showPushId()
         setTouchListenerForBottomMenu()
+    }
+
+    private fun showDeleteMenu(show: Boolean) {
+        menuToolbar?.findItem(R.id.app_bar_delete)?.isVisible = show
+
     }
 
     private fun setTouchListenerForBottomMenu() {
@@ -276,7 +282,6 @@ class RoomsFragment : Fragment(), RoomsView, RoomsAdapterListener, ProjectsBotto
         })
     }
 
-    private var menuToolbar: Menu? = null
 
     private fun getSearchView() = menuToolbar?.findItem(R.id.app_bar_search).let {
         it?.actionView as SearchView
@@ -285,6 +290,11 @@ class RoomsFragment : Fragment(), RoomsView, RoomsAdapterListener, ProjectsBotto
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_toolbar_room, menu)
         menuToolbar = menu
+
+        /** Добавил поле 23.03.2022
+         * @author Max F. */
+        showDeleteMenu(false)
+
         val mSearchView = getSearchView()
         mSearchView.queryHint = getString(R.string.rooms_toolbar_search)
         val searchEditFrame: LinearLayout =
@@ -320,6 +330,9 @@ class RoomsFragment : Fragment(), RoomsView, RoomsAdapterListener, ProjectsBotto
             }
             false
         }
+
+
+
         super.onCreateOptionsMenu(menu, inflater)
     }
 
@@ -359,11 +372,17 @@ class RoomsFragment : Fragment(), RoomsView, RoomsAdapterListener, ProjectsBotto
                         it.title = getString(R.string.off_notification)
                         dataBaseParams.deleteKey(DataBaseParams.KEY_ID_NOTIFICATION + idProject)
                     }
+
+
                     menuAdapter.notifyDataSetChanged()
+                }
+                /** Добавил поле 22.03.2022
+                 * @author Max F. */
+                R.id.app_bar_delete -> {
+                    roomsAdapter.deleteSelectedItem()
                 }
             }
         }
-
         return true
     }
 
@@ -490,7 +509,10 @@ class RoomsFragment : Fragment(), RoomsView, RoomsAdapterListener, ProjectsBotto
             if (swipeRefresh.isRefreshing) {
 //                roomsAdapter.loadmore = true
                 if (roomsAdapter.roomsList.isEmpty()) {
-                    roomsAdapter = RoomsAdapter(roomsList, this)
+                    /** добавил
+                     * @param show
+                     * @author Max Fedorchenko 22.03.2022*/
+                    roomsAdapter = RoomsAdapter(roomsList, this) { show -> showDeleteMenu(show) }
                     recyclerView.adapter = roomsAdapter
                 } else {
                     roomsAdapter.update(roomsList)
@@ -543,6 +565,7 @@ class RoomsFragment : Fragment(), RoomsView, RoomsAdapterListener, ProjectsBotto
     override fun onItemClick(room: Room) {
         mainContract?.showMessages(idProject, room.id, room.name, room.avatar, room.client_type)
     }
+
 
     override fun onLoadmore() {
         if (!isLoadMoreRun) {
@@ -622,20 +645,25 @@ class RoomsFragment : Fragment(), RoomsView, RoomsAdapterListener, ProjectsBotto
 //    }
 
     override fun onItemLongClick(index: Int) {
-        AlertDialog.Builder(context, R.style.AlertDialogStyle)
-            .setTitle(getString(R.string.delete_dialog))
-            .setPositiveButton(R.string.yes) { _, _ ->
-                roomsPresenterImpl.deleteRoom(
-                    index,
-                    token,
-                    login,
-                    roomsAdapter.roomsList[index].id,
-                    idProject
-                )
-            }
-            .setNegativeButton(R.string.no) { dialog, _ -> dialog.dismiss() }
-            .show()
+//        AlertDialog.Builder(
+//            context,
+//            R.style.AlertDialogStyle
+//        )                                     //Это Alert на всплывающее окно "Удалить диалог"
+//            .setTitle(getString(R.string.delete_dialog))
+//            .setPositiveButton(R.string.yes) { _, _ ->
+//                roomsPresenterImpl.deleteRoom(
+//                    position,
+//                    token,
+//                    login,
+//                    roomsAdapter.roomsList[position].id,
+//                    idProject
+//                )
+//            }
+//            .setNegativeButton(R.string.no) { dialog, _ -> dialog.dismiss() }
+//            .show()
+
     }
+
 
     override fun onUpdateRoom(roomsList: RoomsData) {
         errorView.visibility = View.GONE

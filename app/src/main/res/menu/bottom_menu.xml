@@ -1,31 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-            android:id="@+id/menu1"
-            android:enabled="true"
-            android:orderInCategory="1"
-            android:title="Все\nобращения"
-            android:icon="@drawable/ic_file" />
+        android:id="@+id/menu1"
+        android:enabled="true"
+        android:icon="@drawable/ic_file"
+        android:orderInCategory="1"
+        android:title="Все\nобращения" />
 
     <item
-            android:id="@+id/menu2"
-            android:enabled="true"
-            android:orderInCategory="2"
-            android:title="Ожидают ответа"
-            android:icon="@drawable/ic_play" />
+        android:id="@+id/menu2"
+        android:enabled="true"
+        android:icon="@drawable/ic_play"
+        android:orderInCategory="2"
+        android:title="Ожидают ответа" />
 
     <item
-            android:id="@+id/menu3"
-            android:enabled="true"
-            android:orderInCategory="3"
-            android:title="Мои клиенты"
-            android:icon="@drawable/ic_back" />
+        android:id="@+id/menu3"
+        android:enabled="true"
+        android:icon="@drawable/ic_back"
+        android:orderInCategory="3"
+        android:title="Мои клиенты" />
 
     <item
-            android:id="@+id/menu4"
-            android:enabled="true"
-            android:orderInCategory="4"
-            android:title="Свободные клиенты"
-            android:icon="@drawable/ic_error" />
+        android:id="@+id/menu4"
+        android:enabled="true"
+        android:icon="@drawable/ic_error"
+        android:orderInCategory="4"
+        android:title="Свободные клиенты" />
+
+    <item
+        android:id="@+id/action_clear"
+        android:orderInCategory="100"
+        android:title="@string/delete_dialog" />
+
 
 </menu>
