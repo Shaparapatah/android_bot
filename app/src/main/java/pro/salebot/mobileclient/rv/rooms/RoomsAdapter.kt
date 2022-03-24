@@ -48,12 +48,14 @@ class RoomsAdapter(
                         }
                     } else if (isEnable) {
                         selectedItem(h, item, position)
+
+                    }else {
+                        roomsAdapterListener?.onItemClick(roomsList[position])
                     }
                 }
 
 //                    h.itemView.setOnClickListener {
-//                        roomsAdapterListener?.onItemClick(roomsList[position])
-//                        isEnable = true
+
 //                    }
 
 
